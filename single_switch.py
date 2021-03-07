@@ -67,7 +67,23 @@ class SingleSwitchTopo(Topo):
             self.addLink(host, switch, bw=10)
 
 
-# topos = {'singleswitchtopo': (lambda: SingleSwitchTopo(n=4))}
+
+class TwoSwitchTwoHost(Topo):
+    def __init__(self):
+
+        # Initialize topology
+        Topo.__init__(self)
+
+        # Add hosts and switches
+        leftHost = self.addHost('h1')
+        rightHost = self.addHost('h2')
+        leftSwitch = self.addSwitch('s3',protocols='OpenFlow13')
+        rightSwitch = self.addSwitch('s4',protocols='OpenFlow13')
+
+        # Add links
+        self.addLink(leftHost, leftSwitch)
+        self.addLink(leftSwitch, rightSwitch)
+        self.addLink(rightSwitch, rightHost)
 
 
 if __name__ == '__main__':
@@ -75,7 +91,7 @@ if __name__ == '__main__':
     setLogLevel('info')
     # simpleTest()
     # perfTest()
-    topo = SingleSwitchTopo(n=4)
+    topo = TwoSwitchTwoHost
 
     net = Mininet(topo=topo, link=TCLink,
                   controller=None,
