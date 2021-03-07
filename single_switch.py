@@ -91,7 +91,7 @@ if __name__ == '__main__':
     setLogLevel('info')
     # simpleTest()
     # perfTest()
-    topo = TwoSwitchTwoHost
+    topo = TwoSwitchTwoHost()
 
     net = Mininet(topo=topo, link=TCLink,
                   controller=None,
