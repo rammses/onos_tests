@@ -12,7 +12,7 @@ from mininet.node import RemoteController
 # Traffic Control
 from mininet.link import TCLink
 
-REMOTE_CONTROLLER_IP = "127.0.0.1"
+REMOTE_CONTROLLER_IP = "172.21.22.1"
 
 
 def simpleTest():
